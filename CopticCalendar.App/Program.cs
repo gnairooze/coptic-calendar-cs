@@ -4,7 +4,7 @@ using CopticCalendar.App;
 if(args.Count() != 3)
 {
     Console.WriteLine("invalid syntax.");
-    Console.WriteLine("CopticCalendat.App [gregorian year] [gregorian month] [gregorian day]");
+    Console.WriteLine("CopticCalendar.App [gregorian year] [gregorian month] [gregorian day]");
     Environment.Exit(-1);
 }
 
