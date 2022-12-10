@@ -1,20 +1,34 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using CopticCalendar.App;
 
+int GregorianYear, GregorianMonth, GregorianDay;
+GregorianYear = GregorianMonth = GregorianDay = default(int);
+
+bool parseYearSucceeded, parseMonthSucceeded, parseDaySucceeded;
+parseYearSucceeded = parseMonthSucceeded = parseDaySucceeded = false;
+
 if(args.Count() != 3)
 {
     Console.WriteLine("invalid syntax.");
     Console.WriteLine("CopticCalendar.App [gregorian year] [gregorian month] [gregorian day]");
-    Environment.Exit(-1);
+    //Environment.Exit(-1);
+
+    Console.WriteLine("example:");
+
+    DateTime runDate = DateTime.Now;
+    GregorianYear = runDate.Year;
+    GregorianMonth = runDate.Month;
+    GregorianDay = runDate.Day;
+    parseYearSucceeded = parseMonthSucceeded = parseDaySucceeded = true;
+
+    Console.WriteLine($"CopticCalendar.App {GregorianYear} {GregorianMonth} {GregorianDay}");
 }
-
-int GregorianYear = default(int);
-int GregorianMonth = default(int);
-int GregorianDay = default(int);
-
-bool parseYearSucceeded = int.TryParse(args[0], out GregorianYear);
-bool parseMonthSucceeded = int.TryParse(args[1], out GregorianMonth);
-bool parseDaySucceeded = int.TryParse(args[2], out GregorianDay);
+else
+{
+    parseYearSucceeded = int.TryParse(args[0], out GregorianYear);
+    parseMonthSucceeded = int.TryParse(args[1], out GregorianMonth);
+    parseDaySucceeded = int.TryParse(args[2], out GregorianDay);
+}
 
 if (!parseYearSucceeded) Console.WriteLine($"invalid gregorian year {args[0]}");
 if (!parseMonthSucceeded) Console.WriteLine($"invalid gregorian month {args[1]}");
